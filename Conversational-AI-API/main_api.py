@@ -8,10 +8,10 @@ import os
 import logging
 
 app = Flask(__name__)
-import constant
+#import constant
 
 # Set your OpenAI API key
-openai.api_key = constant.open_ai_key
+openai.api_key = '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'
 #openai.api_key = os.getenv('OPENAI_API_KEY')
 
 logging.basicConfig(level=logging.INFO)
