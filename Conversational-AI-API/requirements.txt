@@ -5,3 +5,4 @@ scikit-learn
 Streamlit
 PyPDF2
 flask-cors
+streamlit openai==0.28
