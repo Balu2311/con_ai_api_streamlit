@@ -17,8 +17,11 @@ else:
 # Load resource files
 def load_resources():
     resources = {}
-    for root, dirs, files in os.walk('Sample_Training_Documents'):
+    st.success("files loading")
+    for root, dirs, files in os.walk('Sample Training Documents'):
+        st.success("files loading")
         for file in files:
+            st.success(file)
             if file.endswith('.docx'):
                 doc = Document(os.path.join(root, file))
                 content = ''
