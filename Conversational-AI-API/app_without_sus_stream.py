@@ -68,7 +68,7 @@ if st.button("Submit"):
             messages=[{"role": "user", "content": user_input}]
         )
         bot_response = response.choices[0].message['content']
-        st.success("suggested_files going")
+        #st.success("suggested_files going")
         suggested_files, referral_links = suggest_files(user_input)
 
         st.subheader("Response from AI:")
@@ -82,9 +82,9 @@ if st.button("Submit"):
         # st.write(f"File: {suggested_file}")
         # st.write(f"Links: {referral_link}")
         # st.subheader("Suggested Resources:")
-        if suggestions:
-            suggested_file = suggestions[0][0]  # Get the file name of the top suggestion
-            referral_link = suggestions[0][2]    # Get the links of the top suggestion
+        if suggested_files:
+            suggested_file = suggested_files[0][0]  # Get the file name of the top suggestion
+            referral_link = referral_links[0][2]    # Get the links of the top suggestion
         else:
             suggested_file = None
             referral_link = None
