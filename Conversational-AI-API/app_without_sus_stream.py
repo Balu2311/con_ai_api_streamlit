@@ -83,13 +83,13 @@ if st.button("Submit"):
         # st.write(f"Links: {referral_link}")
         # st.subheader("Suggested Resources:")
         if suggested_files:
-            suggested_file = suggested_files[0][0]  # Get the file name of the top suggestion
+            suggested_file = suggested_files[0]  # Get the file name of the top suggestion
             referral_link = referral_links[0][2]    # Get the links of the top suggestion
         else:
             suggested_file = None
             referral_link = None
         st.write(f"File: {suggested_file}")
-        st.write(f"Links: {referral_link[0]}")
+        st.write(f"Links: {referral_link}")
         # st.success(suggested_files)
         # st.success(referral_links)
         # if suggested_files:
