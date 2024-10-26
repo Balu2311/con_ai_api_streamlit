@@ -40,6 +40,7 @@ def load_resources():
     return resources
 
 resources = load_resources()
+st.success("resources_data": resources)
 
 # Suggest files and links based on user input
 def suggest_files(issue):
@@ -52,6 +53,7 @@ def suggest_files(issue):
         if issue.lower() in content.lower() or file_name.lower().startswith(issue.lower()):
             suggestions.append(file_name)
             referral_links.extend(links)
+    st.success("suggested_files return")
     return suggestions, referral_links
 
 # Streamlit UI
@@ -65,7 +67,7 @@ if st.button("Submit"):
             messages=[{"role": "user", "content": user_input}]
         )
         bot_response = response.choices[0].message['content']
-
+        st.success("suggested_files going")
         suggested_files, referral_links = suggest_files(user_input)
 
         st.subheader("Response from AI:")
@@ -79,8 +81,8 @@ if st.button("Submit"):
         #     referral_link = None
         # st.write(f"File: {suggested_file}")
         # st.write(f"Links: {referral_link[0]}")
-        st.success("suggested_files")
-        st.success("referral_links")
+        st.success(suggested_files)
+        st.success(referral_links)
         if suggested_files:
             st.subheader("Suggested Files:")
             for file in suggested_files:
