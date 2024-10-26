@@ -7,6 +7,7 @@ import streamlit as st
 # Load environment variables
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = st.secrets["open_ai_key"]
 
 if openai.api_key is None:
     st.error("OpenAI API key not found. Please check your .env file.")
@@ -54,8 +55,8 @@ def suggest_files(issue):
     return suggestions, referral_links
 
 # Streamlit UI
-st.title("Document Retrieval System")
-user_input = st.text_input("Enter your query:")
+st.title("Conversational AI Chat-3")
+user_input = st.text_input("Please describe your issue:")
 
 if st.button("Submit"):
     if user_input:
@@ -69,7 +70,15 @@ if st.button("Submit"):
 
         st.subheader("Response from AI:")
         st.write(bot_response)
-
+        # st.subheader("Suggested Resources:")
+        # if suggestions:
+        #     suggested_file = suggestions[0][0]  # Get the file name of the top suggestion
+        #     referral_link = suggestions[0][2]    # Get the links of the top suggestion
+        # else:
+        #     suggested_file = None
+        #     referral_link = None
+        # st.write(f"File: {suggested_file}")
+        # st.write(f"Links: {referral_link[0]}")
         if suggested_files:
             st.subheader("Suggested Files:")
             for file in suggested_files:
