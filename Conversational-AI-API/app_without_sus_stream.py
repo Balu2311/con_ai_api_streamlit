@@ -17,11 +17,8 @@ else:
 # Load resource files
 def load_resources():
     resources = {}
-    st.success("files loading")
     for root, dirs, files in os.walk('Sample Training Documents'):
-        st.success("files loading")
         for file in files:
-            st.success(file)
             if file.endswith('.docx'):
                 doc = Document(os.path.join(root, file))
                 content = ''
@@ -43,7 +40,7 @@ def load_resources():
     return resources
 
 resources = load_resources()
-st.write(f"resources_data:  {resources}")
+#st.write(f"resources_data:  {resources}")
 #st.write(f"File: {suggested_file}")
 
 # Suggest files and links based on user input
@@ -57,7 +54,7 @@ def suggest_files(issue):
         if issue.lower() in content.lower() or file_name.lower().startswith(issue.lower()):
             suggestions.append(file_name)
             referral_links.extend(links)
-    st.success("suggested_files return")
+    #st.success("suggested_files return")
     return suggestions, referral_links
 
 # Streamlit UI
@@ -85,25 +82,25 @@ if st.button("Submit"):
         # st.write(f"File: {suggested_file}")
         # st.write(f"Links: {referral_link}")
         # st.subheader("Suggested Resources:")
-        # if suggestions:
-        #     suggested_file = suggestions[0][0]  # Get the file name of the top suggestion
-        #     referral_link = suggestions[0][2]    # Get the links of the top suggestion
-        # else:
-        #     suggested_file = None
-        #     referral_link = None
-        # st.write(f"File: {suggested_file}")
-        # st.write(f"Links: {referral_link[0]}")
-        st.success(suggested_files)
-        st.success(referral_links)
-        if suggested_files:
-            st.subheader("Suggested Files:")
-            for file in suggested_files:
-                st.write(file)
-            st.subheader("Referral Links:")
-            for link in referral_links:
-                st.write(link)
+        if suggestions:
+            suggested_file = suggestions[0][0]  # Get the file name of the top suggestion
+            referral_link = suggestions[0][2]    # Get the links of the top suggestion
         else:
-            st.write("No suggestions found.")
+            suggested_file = None
+            referral_link = None
+        st.write(f"File: {suggested_file}")
+        st.write(f"Links: {referral_link[0]}")
+        # st.success(suggested_files)
+        # st.success(referral_links)
+        # if suggested_files:
+        #     st.subheader("Suggested Files:")
+        #     for file in suggested_files:
+        #         st.write(file)
+        #     st.subheader("Referral Links:")
+        #     for link in referral_links:
+        #         st.write(link)
+        # else:
+        #     st.write("No suggestions found.")
     else:
         st.warning("Please provide some input.")
 
