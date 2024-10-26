@@ -79,6 +79,8 @@ if st.button("Submit"):
         #     referral_link = None
         # st.write(f"File: {suggested_file}")
         # st.write(f"Links: {referral_link[0]}")
+        st.success("suggested_files")
+        st.success("referral_links")
         if suggested_files:
             st.subheader("Suggested Files:")
             for file in suggested_files:
