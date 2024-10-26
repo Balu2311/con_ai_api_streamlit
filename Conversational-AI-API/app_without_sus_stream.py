@@ -40,7 +40,8 @@ def load_resources():
     return resources
 
 resources = load_resources()
-st.success("resources_data": resources)
+st.write(f"resources_data:  {resources}")
+#st.write(f"File: {suggested_file}")
 
 # Suggest files and links based on user input
 def suggest_files(issue):
